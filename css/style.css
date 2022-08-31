@@ -41,6 +41,7 @@
     margin-bottom: 12px;
     position:relative;
     margin-left: 15px;
+    cursor: pointer;
   }
 
   .nome-quizz{
@@ -147,7 +148,6 @@
   .banner{
     width: 100%;
     height: 227px;
-    margin-bottom: 42px;
     position: relative;
   }
 
@@ -159,7 +159,7 @@
   .nome-banner{
     position: absolute;
     width: 50%;
-    height: 113.5px;
+    height: 50%;
     left: 25%;
     top: 25%;
     font-family: 'Roboto', sans-serif;
@@ -180,7 +180,7 @@
     height: 676px;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 42px;
+    margin-top: 42px;
     padding: 28px;
   }
 
@@ -218,7 +218,7 @@
   .resposta{
     width: 330px;
     height: 217px;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -233,8 +233,86 @@
     margin-bottom: 8px;
   }
 
+  .caixa-de-resultado-do-quizz{
+    width: 759px;
+    height: 440px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 28px;
+    margin-top: 44px;
+  }
 
+  .pontuacao{
+    width: 100%;
+    height: 99px;
+    background: #EC362D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .pontuacao span{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    color: #FFFFFF;
+  }
+
+  .resultado{
+    margin-top: 18px;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+    color: #484848;
+  }
+
+  .resultado img{
+    width: 364px;
+    height: 273px;
+    margin-right: 21px;
+  }
+
+  .reiniciar-quizz{
+    width: 260.38px;
+    height: 52px;
+    background: #EC362D;
+    border-radius: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #FFF5F4;
+    border: thin;
+    margin-top: 57px;
+  }
+
+  .voltar-pra-home{
+     background: #FAFAFA;
+    width: 219.64px;
+    height: 44px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #818181;
+    border: thin;
+    background-color: none;
+    margin-top: 16px;
+  }
+
+  .botoes-finais{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 85px;
+  }
 
 
   /* ------------------------------------------------------------------------------------*/
@@ -284,6 +362,104 @@
 
       .titulo-quadro {
        margin-left: 0px;
+      }
+
+      .banner{
+        height: 142px;
+      }
+
+      .nome-banner{
+        width: 60%;
+        left: 20%;
+        font-size: 19px;
+        line-height: 22px;
+      }
+
+      .quadro-pergunta{
+        width: 374px;
+        height: 100%;
+        padding: 18px;
+        margin-top: 28px;
+      }
+
+      .pergunta{
+        width: 100%;
+        height: 89px;
+      }
+
+      .pergunta span{
+        font-size: 19px;
+        line-height: 22px;
+      }
+
+      .opcoes-resposta{
+        height: 293px;
+        justify-content: space-between;
+      }
+    
+
+      .resposta{
+        width: 163px;
+        height: 140px;
+        margin-bottom: 12px;
+      }
+    
+      .resposta img{
+        width: 163px;
+        height: 113px;
+        margin-bottom: 5px;
+      }
+
+
+
+
+
+      .caixa-de-resultado-do-quizz{
+        width: 375px;
+        height: 500px;
+        padding: 18px;
+        margin-top: 24px;
+      }
+      .pontuacao {
+        padding: 2%;
+      }
+    
+      .pontuacao span{
+        font-size: 19px;
+        line-height: 22px;
+        text-align: center;
+      }
+    
+      .resultado{
+        margin-top: 18px;
+        font-size: 17px;
+        line-height: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .resultado img{
+        width: 340px;
+        height: 255px;
+        margin-bottom: 9px;
+      }
+    
+      .reiniciar-quizz{
+        width: 220px;
+        height: 44px;
+        font-size: 18px;
+        line-height: 21px;
+        margin-top: 34px;
+      }
+    
+      .voltar-pra-home{
+        font-size: 18px;
+        line-height: 21px;
+        margin-top: 8px;
+      }
+    
+      .botoes-finais{
+        margin-bottom: 40px;
       }
     }
 
