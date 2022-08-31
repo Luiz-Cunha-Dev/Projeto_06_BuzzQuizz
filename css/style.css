@@ -110,7 +110,7 @@
   .janela-seus-quizzes button{
     background-color: #EC362D;
     border: 1px dashed #EC362D;
-    color: white;
+    color: #FFFFFF;
     width: 30px;
     height: 30px;
     border-radius: 15px;
@@ -121,8 +121,8 @@
   }
 
   .janela-todos-os-quizzes{
-   width: 1066px;
-   margin-top: 77px;
+    width: 1066px;
+    margin-top: 77px;
   }
 
   .titulo-quadro {
@@ -131,8 +131,8 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
-   margin-bottom: 12px;
-   margin-left: 15px;
+    margin-bottom: 12px;
+    margin-left: 15px;
   }
 
   .quadro-de-quizzes{
@@ -141,6 +141,104 @@
   }
 
   /* ------------------------------------------------------------------------------------*/
+
+  /* ----------------- Tela 2 - quizz --------------------*/
+
+  .banner{
+    width: 100%;
+    height: 227px;
+    margin-bottom: 42px;
+    position: relative;
+  }
+
+  .banner img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .nome-banner{
+    position: absolute;
+    width: 50%;
+    height: 113.5px;
+    left: 25%;
+    top: 25%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 46px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  .quadro-pergunta{
+    width: 759px;
+    height: 676px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 42px;
+    padding: 28px;
+  }
+
+  .pergunta{
+    width: 100%;
+    height: 138px;
+    background-color: #434CA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    margin-bottom: 20px;
+  }
+
+  .pergunta span{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .opcoes-resposta{
+    width: 100%;
+    height: 448px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .resposta{
+    width: 330px;
+    height: 217px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    margin-bottom: 18px;
+  }
+
+  .resposta img{
+    width: 330px;
+    height: 175px;
+    margin-bottom: 8px;
+  }
+
+
+
+
+
+  /* ------------------------------------------------------------------------------------*/
+
 
 
   /* -------------------------- diversos -----------------------------------*/
@@ -158,10 +256,12 @@
 
       .janela-criar-primeiro-quizz{
         width: 340px;
+        margin-top: 31px;
       }
   
       .janela-seus-quizzes{
         width: 340px;
+        margin-top: 31px;
       }
 
       .janela-seus-quizzes button{
@@ -170,6 +270,7 @@
   
       .janela-todos-os-quizzes{
         width: 340px;
+        margin-top: 35px;
        }
   
        .quadro-de-quizzes{
