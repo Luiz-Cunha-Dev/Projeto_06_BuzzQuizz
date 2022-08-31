@@ -32,6 +32,34 @@
     background: #FAFAFA;
   }
 
+  .quizz{
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+    border-radius: 5px;
+    margin-bottom: 12px;
+    position:relative;
+  }
+
+  .nome-quizz{
+    width: 301px;
+    height: 80px;
+    position: absolute;
+    left: 18px;
+    bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #FFFFFF;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: flex-end;
+  }
+ 
+  /* ----------------- janela-criar-primeiro-quizz ------------------------------------*/
+
   .janela-criar-primeiro-quizz{
     width: 1051px;
     height: 181px;
@@ -66,3 +94,30 @@
     border-radius: 50px;
     margin-top: 15px;
   }
+
+  /* ------------------------------------------------------------------------------------*/
+
+
+  /* -------------------------- janela-todos-os-quizzes -----------------------------------*/
+
+  .janela-todos-os-quizzes{
+   width: 1051px;
+   margin-top: 77px;
+  }
+
+  .titulo-quadro {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+   margin-bottom: 12px;
+  }
+
+  .quadro-de-quizzes{
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: space-between;
+  }
+
+  /* ------------------------------------------------------------------------------------*/
