@@ -315,21 +315,20 @@
   }
 
   /* -------------------------------- TELA 3 --------------------------------------------*/
-  .quizInfo {
+  .quizInfo, .perguntasQuizz {
     margin-top: 71px;
     text-align: center;
   }
 
-  .quizInfo h1 {
+  .quizInfo, .perguntasQuizz h1 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-size: 23px;
     color: #000000;
   }
-  .inputInfo {
+  .inputInfo, .criar-pergunta {
     width: 600px;
-    height: 256px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     display: flex;
@@ -337,7 +336,18 @@
     padding: 17px 20px;
     margin-top: 27px;
   }
+  .inputInfo{
+    height: 256px;
+  }
   .inputInfo input {
+    width: 564px;
+    height: 46px;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    margin-bottom: 9px;
+    padding-left: 15px;
+  }
+  .pergunta-corpo input {
     width: 564px;
     height: 46px;
     border: 1px solid #d1d1d1;
@@ -355,6 +365,27 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 85px;
     cursor: pointer;
+  }
+  .pergunta-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .pergunta-header img {
+    cursor: pointer;
+  }
+  .resposta-certa, .respostas-erradas {
+    margin-top: 28px;
+    text-align: left;
+  }
+  .resposta-certa h1 {
+    margin-bottom: 24px;
+  }
+  .respostas-erradas h1 {
+    margin-bottom: 24px;
+  }
+  .resp {
+    margin-bottom: 32px;
   }
 
 
@@ -503,6 +534,13 @@
     
       .botoes-finais{
         margin-bottom: 40px;
+      }
+
+      .inputInfo {
+        width: 375px;
+      }
+      .inputInfo input {
+        width: 341px;
       }
     }
 
