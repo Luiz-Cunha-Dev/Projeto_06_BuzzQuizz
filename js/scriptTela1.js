@@ -16,8 +16,7 @@ let listaQuizzesServidor;
 let quizz;
 let imgENomeBanner;
 let quadroDePergunta;
-
-
+let respostasEmbaralhadas;
 
 
 function importarQuizzes(){
@@ -62,6 +61,8 @@ function abrirQuizz(idSelecionado){
 
         for(let c = 0; c < listaQuizzesServidor[i].questions.length; c++){
 
+            respostasEmbaralhadas = (listaQuizzesServidor[i].questions[c].answers).sort(comparador);
+
             if(listaQuizzesServidor[i].questions[c].answers.length === 2){
 
                 quadroDePergunta= 
@@ -69,12 +70,12 @@ function abrirQuizz(idSelecionado){
                 <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
                         <div class="resposta">
-                            <img src="${listaQuizzesServidor[i].questions[c].answers[0].image}">
-                            <p>${listaQuizzesServidor[i].questions[c].answers[0].text}</p>
+                            <img src="${respostasEmbaralhadas[0].image}">
+                            <p>${respostasEmbaralhadas[0].text}</p>
                         </div>
                         <div class="resposta">
-                            <img src="${listaQuizzesServidor[i].questions[c].answers[1].image}">
-                            <p>${listaQuizzesServidor[i].questions[c].answers[1].text}</p>
+                            <img src="${respostasEmbaralhadas[1].image}">
+                            <p>${respostasEmbaralhadas[1].text}</p>
                         </div>
                     </div>
                 </div>
@@ -90,16 +91,16 @@ function abrirQuizz(idSelecionado){
                 <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
                         <div class="resposta">
-                            <img src="${listaQuizzesServidor[i].questions[c].answers[0].image}">
-                            <p>${listaQuizzesServidor[i].questions[c].answers[0].text}</p>
+                            <img src="${respostasEmbaralhadas[0][0].image}">
+                            <p>${respostasEmbaralhadas[0].text}</p>
                         </div>
                         <div class="resposta">
-                            <img src="${listaQuizzesServidor[i].questions[c].answers[1].image}">
-                            <p>${listaQuizzesServidor[i].questions[c].answers[1].text}</p>
+                            <img src="${respostasEmbaralhadas[1].image}">
+                            <p>${respostasEmbaralhadas[1].text}</p>
                         </div>
                         <div class="resposta">
-                            <img src="${listaQuizzesServidor[i].questions[c].answers[2].image}">
-                            <p>${listaQuizzesServidor[i].questions[c].answers[2].text}</p>
+                            <img src="${respostasEmbaralhadas[2].image}">
+                            <p>${respostasEmbaralhadas[2].text}</p>
                         </div>
                     </div>
                 </div>
@@ -115,20 +116,20 @@ function abrirQuizz(idSelecionado){
             <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                 <div class="opcoes-resposta">
                     <div class="resposta">
-                        <img src="${listaQuizzesServidor[i].questions[c].answers[0].image}">
-                        <p>${listaQuizzesServidor[i].questions[c].answers[0].text}</p>
+                        <img src="${respostasEmbaralhadas[0].image}">
+                        <p>${respostasEmbaralhadas[0].text}</p>
                     </div>
                     <div class="resposta">
-                        <img src="${listaQuizzesServidor[i].questions[c].answers[1].image}">
-                        <p>${listaQuizzesServidor[i].questions[c].answers[1].text}</p>
+                        <img src="${respostasEmbaralhadas[1].image}">
+                        <p>${respostasEmbaralhadas[1].text}</p>
                     </div>
                     <div class="resposta">
-                        <img src="${listaQuizzesServidor[i].questions[c].answers[2].image}">
-                        <p>${listaQuizzesServidor[i].questions[c].answers[2].text}</p>
+                        <img src="${respostasEmbaralhadas[2].image}">
+                        <p>${respostasEmbaralhadas[2].text}</p>
                     </div>
                     <div class="resposta">
-                        <img src="${listaQuizzesServidor[i].questions[c].answers[3].image}">
-                        <p>${listaQuizzesServidor[i].questions[c].answers[3].text}</p>
+                        <img src="${respostasEmbaralhadas[3].image}">
+                        <p>${respostasEmbaralhadas[3].text}</p>
                     </div>
                 </div>
             </div>
@@ -166,7 +167,9 @@ function renderizarTodosOsQuizzes(listaQuizzes){
         
         quadroTodosOsQuizzes.innerHTML += quizz;
     }
+}
 
 
-
+function comparador() { 
+	return Math.random() - 0.5; 
 }

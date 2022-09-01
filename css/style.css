@@ -197,19 +197,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5%;
   }
 
   .pergunta span{
+    width: 95%;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
-    display: flex;
-    align-items: center;
-    text-align: center;
     color: #FFFFFF;
+    text-align: center;
+    overflow-wrap: break-word;
+
   }
 
   .opcoes-resposta{
@@ -221,7 +221,6 @@
 
   .resposta{
     width: 330px;
-    height: 217px;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -230,7 +229,6 @@
     color: #000000;
     overflow-wrap: break-word;
     margin-top: 20px;
-    margin-bottom: 5px;
   }
 
   .resposta img{
@@ -239,9 +237,6 @@
     margin-bottom: 8px;
   }
 
-  .resposta p{
-    margin-bottom: 18px;
-  }
 
   .caixa-de-resultado-do-quizz{
     width: 759px;
@@ -460,7 +455,6 @@
 
       .quadro-pergunta{
         width: 374px;
-        height: 100%;
         padding: 18px;
         margin-top: 28px;
       }
@@ -468,6 +462,7 @@
       .pergunta{
         width: 100%;
         height: 89px;
+        padding: 0px;
       }
 
       .pergunta span{
@@ -476,15 +471,19 @@
       }
 
       .opcoes-resposta{
-        height: 293px;
         justify-content: space-between;
       }
     
 
       .resposta{
         width: 163px;
-        height: 140px;
         margin-bottom: 12px;
+        margin-top: 13px;
+      }
+
+      .resposta p{
+        font-size: 13px;
+        line-height: 15px;
       }
     
       .resposta img{
