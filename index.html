@@ -17,19 +17,19 @@
         <div class="janela-criar-primeiro-quizz hidden">
             <p>Você não criou nenhum</p>
             <p>quizz ainda :(</p>
-            <button onclick="criarQuizz()">Criar Quizz</button>
+            <button onclick="criarQuizz(this)">Criar Quizz</button>
         </div>
 
         <div class="janela-seus-quizzes">
             <div class="titulo-quadro">Seus Quizzes
-                <button onclick="criarQuizz()">+</button>
+                <button onclick="criarQuizz(this)">+</button>
             </div>
             <div class="quadro-de-quizzes">
-                <div class="quizz" onclick="abrirQuizz()">
+                <div class="quizz" onclick="abrirQuizz(this)">
                     <img src="imgs/Rectangle 34.png">
                     <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
                 </div>
-                <div class="quizz" onclick="abrirQuizz()">
+                <div class="quizz" onclick="abrirQuizz(this)">
                     <img src="imgs/Rectangle 34.png">
                     <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
                 </div>
@@ -46,64 +46,21 @@
     <div class="tela2 hidden">
 
         <div class="banner">
-            <img src="imgs/Rectangle 42.png">
+            <img src="imgs/azul-claro17.jpg">
             <div class="nome-banner">O quão Potterhead é você?</div>
         </div>
 
         <div class="lista-de-quadros">
 
-            <div class="quadro-pergunta">
-                <div class="pergunta"><span>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</span></div>
-                    <div class="opcoes-resposta">
-                        <div class="resposta">
-                            <img src="imgs/image 3.png">
-                            Gatíneo
-                        </div>
-                        <div class="resposta">
-                            <img src="imgs/image 3.png">
-                            Gatíneo
-                        </div>
-                        <div class="resposta">
-                            <img src="imgs/image 3.png">
-                            Gatíneo
-                        </div>
-                        <div class="resposta">
-                            <img src="imgs/image 3.png">
-                            Gatíneo
-                        </div>
-                    </div>
-                </div>
 
-                <div class="quadro-pergunta">
-                    <div class="pergunta"><span>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</span></div>
-                        <div class="opcoes-resposta">
-                            <div class="resposta">
-                                <img src="imgs/image 3.png">
-                                Gatíneo
-                            </div>
-                            <div class="resposta">
-                                <img src="imgs/image 3.png">
-                                Gatíneo
-                            </div>
-                            <div class="resposta">
-                                <img src="imgs/image 3.png">
-                                Gatíneo
-                            </div>
-                            <div class="resposta">
-                                <img src="imgs/image 3.png">
-                                Gatíneo
-                            </div>
-                        </div>
-                    </div>
-
-                <div class="caixa-de-resultado-do-quizz">
+                <div class="caixa-de-resultado-do-quizz hidden">
                     <div class="pontuacao"><span>88% de acerto: Você é praticamente um aluno de Hogwarts!</span></div>
                     <div class="resultado">
                         <img src="imgs/image 10.png">
                         <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
                     </div>
                 </div>
-                <div class="botoes-finais">
+                <div class="botoes-finais hidden">
                     <button class="reiniciar-quizz">Reiniciar Quizz</button>
                     <button class="voltar-pra-home">Voltar pra home</button>
                 </div>

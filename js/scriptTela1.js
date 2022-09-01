@@ -11,14 +11,14 @@ const caixaDeResultado = document.querySelector('.caixa-de-resultado-do-quizz');
 const botoesFinais = document.querySelector('.botoes-finais');
 const quadroTodosOsQuizzes = document.querySelector('.janela-todos-os-quizzes .quadro-de-quizzes');
 
+
 let listaQuizzesServidor;
 let quizz;
+let imgENomeBanner;
+let quadroDePergunta;
 
 
-function abrirQuizz(){
-tela1.classList.add('hidden');
-tela2.classList.remove('hidden');
-}
+
 
 function importarQuizzes(){
     const promesaQuizzesServidor = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
@@ -27,15 +27,129 @@ function importarQuizzes(){
 }
 importarQuizzes()
 
+
+
 function sucessoEmImportarQuizzes(resposta){
     console.log(resposta);
     listaQuizzesServidor = resposta.data;
     renderizarTodosOsQuizzes(listaQuizzesServidor);
 }
 
+
+
 function erroEmImportarQuizzes(resposta){
     console.log(resposta);
 }
+
+
+
+
+
+
+function abrirQuizz(idSelecionado){
+    console.log(idSelecionado);
+
+    for(let i = 0; i < listaQuizzesServidor.length; i++){
+        if(listaQuizzesServidor[i].id == idSelecionado){
+
+        banner.innerHTML = "";
+        imgENomeBanner = 
+        `<img src="${listaQuizzesServidor[i].image}">
+         <div class="nome-banner">${listaQuizzesServidor[i].title}</div>
+        `;
+
+        banner.innerHTML += imgENomeBanner;
+
+        for(let c = 0; c < listaQuizzesServidor[i].questions.length; c++){
+
+            if(listaQuizzesServidor[i].questions[c].answers.length === 2){
+
+                quadroDePergunta= 
+                `<div class="quadro-pergunta">
+                <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+                    <div class="opcoes-resposta">
+                        <div class="resposta">
+                            <img src="${listaQuizzesServidor[i].questions[c].answers[0].image}">
+                            <p>${listaQuizzesServidor[i].questions[c].answers[0].text}</p>
+                        </div>
+                        <div class="resposta">
+                            <img src="${listaQuizzesServidor[i].questions[c].answers[1].image}">
+                            <p>${listaQuizzesServidor[i].questions[c].answers[1].text}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                `;
+
+                listaQuadros.innerHTML += quadroDePergunta;
+
+            }else if(listaQuizzesServidor[i].questions[c].answers.length === 3){
+
+                quadroDePergunta= 
+                `<div class="quadro-pergunta">
+                <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+                    <div class="opcoes-resposta">
+                        <div class="resposta">
+                            <img src="${listaQuizzesServidor[i].questions[c].answers[0].image}">
+                            <p>${listaQuizzesServidor[i].questions[c].answers[0].text}</p>
+                        </div>
+                        <div class="resposta">
+                            <img src="${listaQuizzesServidor[i].questions[c].answers[1].image}">
+                            <p>${listaQuizzesServidor[i].questions[c].answers[1].text}</p>
+                        </div>
+                        <div class="resposta">
+                            <img src="${listaQuizzesServidor[i].questions[c].answers[2].image}">
+                            <p>${listaQuizzesServidor[i].questions[c].answers[2].text}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                `;
+
+                listaQuadros.innerHTML += quadroDePergunta;
+                
+            }else if(listaQuizzesServidor[i].questions[c].answers.length === 4){
+
+                quadroDePergunta= 
+            `<div class="quadro-pergunta">
+            <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+                <div class="opcoes-resposta">
+                    <div class="resposta">
+                        <img src="${listaQuizzesServidor[i].questions[c].answers[0].image}">
+                        <p>${listaQuizzesServidor[i].questions[c].answers[0].text}</p>
+                    </div>
+                    <div class="resposta">
+                        <img src="${listaQuizzesServidor[i].questions[c].answers[1].image}">
+                        <p>${listaQuizzesServidor[i].questions[c].answers[1].text}</p>
+                    </div>
+                    <div class="resposta">
+                        <img src="${listaQuizzesServidor[i].questions[c].answers[2].image}">
+                        <p>${listaQuizzesServidor[i].questions[c].answers[2].text}</p>
+                    </div>
+                    <div class="resposta">
+                        <img src="${listaQuizzesServidor[i].questions[c].answers[3].image}">
+                        <p>${listaQuizzesServidor[i].questions[c].answers[3].text}</p>
+                    </div>
+                </div>
+            </div>
+            
+            `;
+
+            listaQuadros.innerHTML += quadroDePergunta;
+
+            }
+
+        }
+
+        }
+    }
+
+
+    tela1.classList.add('hidden');
+    tela2.classList.remove('hidden');
+
+}
+
 
 
 function renderizarTodosOsQuizzes(listaQuizzes){
@@ -44,7 +158,7 @@ function renderizarTodosOsQuizzes(listaQuizzes){
     for(let i = 0; i < listaQuizzes.length; i++){
         quizz = 
         `
-        <div class="quizz" onclick="abrirQuizz()">
+        <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaQuizzes[i].id}">
         <img src="${listaQuizzes[i].image}">
         <div class="nome-quizz">${listaQuizzes[i].title}</div>
         </div>
