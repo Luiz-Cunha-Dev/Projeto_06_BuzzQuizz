@@ -12,7 +12,7 @@
 <body>
     <header>BuzzQuizz</header>
 
-    <div class="container tela1">
+    <div class="tela1">
 
         <div class="janela-criar-primeiro-quizz hidden">
             <p>Você não criou nenhum</p>
@@ -22,7 +22,7 @@
 
         <div class="janela-seus-quizzes">
             <div class="titulo-quadro">Seus Quizzes
-                <button onclick="criarQuizz()" >+</button>
+                <button onclick="criarQuizz()">+</button>
             </div>
             <div class="quadro-de-quizzes">
                 <div class="quizz" onclick="abrirQuizz()">
@@ -38,40 +38,19 @@
 
         <div class="janela-todos-os-quizzes">
             <div class="titulo-quadro">Todos os Quizzes</div>
-            <div class="quadro-de-quizzes">
-                <div class="quizz" onclick="abrirQuizz()">
-                    <img src="imgs/Rectangle 34.png">
-                    <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
-                </div>
-                <div class="quizz" onclick="abrirQuizz()">
-                    <img src="imgs/Rectangle 34.png">
-                    <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
-                </div>
-                <div class="quizz" onclick="abrirQuizz()">
-                    <img src="imgs/Rectangle 34.png">
-                    <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
-                </div>
-                <div class="quizz" onclick="abrirQuizz()">
-                    <img src="imgs/Rectangle 34.png">
-                    <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
-                </div>
-                <div class="quizz" onclick="abrirQuizz()">
-                    <img src="imgs/Rectangle 34.png">
-                    <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
-                </div>
-                <div class="quizz" onclick="abrirQuizz()">
-                    <img src="imgs/Rectangle 34.png">
-                    <div class="nome-quizz">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
-                </div>
-            </div>
+            <div class="quadro-de-quizzes"></div>
         </div>
 
-        <div class="banner hidden">
+    </div>
+
+    <div class="tela2 hidden">
+
+        <div class="banner">
             <img src="imgs/Rectangle 42.png">
             <div class="nome-banner">O quão Potterhead é você?</div>
         </div>
 
-        <div class="lista-de-quadros hidden">
+        <div class="lista-de-quadros">
 
             <div class="quadro-pergunta">
                 <div class="pergunta"><span>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</span></div>
@@ -132,27 +111,29 @@
 
         </div>
 
-
-
     </div>
 
-    <div class="criarQuizz hidden container">
+    <div class="tela3 hidden">
+
+        <div class="criarQuizz">
         <div class="quizInfo">
-            <h1>Comece pelo começo</h1>
-            <div class="inputInfo">
-                <input type="text" name="tituloQuizz" placeholder="Título do seu quizz" id="titulo">
-                <input type="url" name="URLquizz" placeholder="URL da imagem do seu quizz" id="URL">
-                <input type="number" name="qtdeQuizz" placeholder="Quantidade de perguntas do seu quizz" id="perguntas">
-                <input type="number" name="niveisQuizz" placeholder="Quantidade de níveis do quizz" id="niveis">
+                <h1>Comece pelo começo</h1>
+                <div class="inputInfo">
+                    <input type="text" name="tituloQuizz" placeholder="Título do seu quizz" id="titulo">
+                    <input type="url" name="URLquizz" placeholder="URL da imagem do seu quizz" id="URL">
+                    <input type="number" name="qtdeQuizz" placeholder="Quantidade de perguntas do seu quizz" id="perguntas">
+                    <input type="number" name="niveisQuizz" placeholder="Quantidade de níveis do quizz" id="niveis">
+                </div>
+                <button onclick="criarFase2()">Prosseguir pra criar perguntas</button>
             </div>
-            <button onclick="criarFase2()">Prosseguir pra criar perguntas</button>
-        </div>
 
-        <div class="perguntasQuizz hidden">
-            <h1>Crie suas perguntas</h1>
-            <div class="conjunto-perguntas">
+            <div class="perguntasQuizz hidden">
+                <h1>Crie suas perguntas</h1>
+                <div class="conjunto-perguntas">
 
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -167,8 +148,9 @@
         
 
     
-
-<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/scriptTela1.js"></script>
+<script src="js/scriptTela2.js"></script>
 <script src="js/scriptTela3.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@
     z-index: 1;
   }
 
-  .container{
+  .tela1, .tela2, .tela3{
     margin-top: 69px;
     display: flex;
     flex-direction: column;
@@ -59,6 +59,11 @@
     overflow-wrap: break-word;
     display: flex;
     align-items: flex-end;
+  }
+
+  .quizz img{
+    width: 100%;
+    height: 100%;
   }
  
   /* ----------------- janela-criar-primeiro-quizz ------------------------------------*/
@@ -127,6 +132,7 @@
   }
 
   .titulo-quadro {
+    width: 100%;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -416,9 +422,6 @@
         margin-top: 31px;
       }
 
-      .janela-seus-quizzes button{
-        margin-left: 180px;
-      }
   
       .janela-todos-os-quizzes{
         width: 340px;
@@ -435,7 +438,9 @@
       }
 
       .titulo-quadro {
-       margin-left: 0px;
+        margin-left: 0px;
+        display: flex;
+        justify-content: space-between;
       }
 
       .banner{
@@ -483,10 +488,6 @@
         height: 113px;
         margin-bottom: 5px;
       }
-
-
-
-
 
       .caixa-de-resultado-do-quizz{
         width: 375px;

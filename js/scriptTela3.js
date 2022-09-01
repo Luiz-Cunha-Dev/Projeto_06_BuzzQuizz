@@ -1,10 +1,7 @@
 function criarQuizz(){
-    const tela1 = document.querySelector('.tela1');
-    const criaQuizz = document.querySelector('.criarQuizz');
 
     tela1.classList.add('hidden');
-    criaQuizz.classList.remove('hidden');
-
+    tela3.classList.remove('hidden');
 }
 
 let titulo;
