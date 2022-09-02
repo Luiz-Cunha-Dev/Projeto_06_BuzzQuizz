@@ -126,6 +126,14 @@ function editar(elemento) {
     const abreDiv = inicioDiv.querySelector('.pergunta-corpo');
     abreDiv.classList.remove('hidden');
 }
+
+function editarNivel(elemento) {
+    elemento.classList.add('hidden');
+    const inicioDiv = elemento.parentNode.parentNode;
+    const abreDiv = inicioDiv.querySelector('.nivel-corpo');
+    abreDiv.classList.remove('hidden');
+}
+
 function criarFase3() {
     const cjtPerguntas = document.querySelectorAll('.criar-pergunta');
     let quest = {
@@ -133,6 +141,7 @@ function criarFase3() {
         color: '',
         answers: []
     }
+    let verificador = 0;
 
     for (let i = 0; i < cjtPerguntas.length; i++){
         let titulo = cjtPerguntas[i].querySelector('input:nth-child(1)').value;
@@ -144,7 +153,8 @@ function criarFase3() {
                 answers: []
             }
         } else {
-            alert('Preencha os campos corretamente')
+            alert('Preencha os campos corretamente');
+            verificador++;
         }
 
         let respCerta = cjtPerguntas[i].querySelector('.resposta-certa');
@@ -158,7 +168,8 @@ function criarFase3() {
             }
             quest.answers.push(objCerto);
         } else {
-            alert('Preencha os dados corretamente')
+            alert('Preencha os dados corretamente');
+            verificador++;
         }
 
         let respsErradas = cjtPerguntas[i].querySelectorAll('.resp');
@@ -174,6 +185,7 @@ function criarFase3() {
                 quest.answers.push(objErrado);
             } else if (j === 0 && !validaResposta(txtErrado)){
                 alert('Preencha os dados corretamente');
+                verificador++;
             } else if (j !== 0 && txtErrado !== ''){
                 let objErrado = {
                     text: txtErrado,
@@ -188,6 +200,37 @@ function criarFase3() {
 
     }
     console.log(quizzObj);
+    if (verificador === 0) {
+        renderizaFase3();
+    }
+}
+
+function renderizaFase3(){
+    const fase2 = document.querySelector('.perguntasQuizz');
+    fase2.classList.add('hidden');
+
+    const fase3 = document.querySelector('.niveisQuizz');
+    fase3.classList.remove('hidden');
+
+    const lista = document.querySelector('.conjunto-niveis');
+    lista.innerHTML = '';
+
+    for (let i = 0; i < niveis; i++) {
+        lista.innerHTML += `
+        <div class="criar-nivel">
+            <div class="nivel-header">
+                <h1>Nível ${i+1}</h1>
+                <img src="imgs/editar.png" onclick="editarNivel(this)" alt="">
+            </div>
+            <div class="nivel-corpo hidden">
+                <input type="text" name="" id="" placeholder="Título do nível">
+                <input type="number" name="" id="" placeholder="% de acerto mínima">
+                <input type="url" name="" id="" placeholder="URL da imagem do nível">
+                <input type="text" name="" id="desc-nivel" placeholder="Descrição do nível">
+            </div>
+        </div>
+        `
+    }
 }
 
 function validaTituloPergunta(str) {
