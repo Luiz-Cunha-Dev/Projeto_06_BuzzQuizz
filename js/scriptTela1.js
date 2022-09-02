@@ -7,8 +7,6 @@ const listaQuadros = document.querySelector('.lista-de-quadros');
 const janelaPrimeiroQuizz = document.querySelector('.janela-criar-primeiro-quizz');
 const janelaSeusQuizzes = document.querySelector('.janela-seus-quizzes');
 const janelaTodosQuizzes = document.querySelector('.janela-todos-os-quizzes');
-const caixaDeResultado = document.querySelector('.caixa-de-resultado-do-quizz');
-const botoesFinais = document.querySelector('.botoes-finais');
 const quadroTodosOsQuizzes = document.querySelector('.janela-todos-os-quizzes .quadro-de-quizzes');
 
 
@@ -17,6 +15,7 @@ let quizz;
 let imgENomeBanner;
 let quadroDePergunta;
 let respostasEmbaralhadas;
+let numeroDePerguntas;
 
 
 function importarQuizzes(){
@@ -46,7 +45,6 @@ function erroEmImportarQuizzes(resposta){
 
 
 function abrirQuizz(idSelecionado){
-    console.log(idSelecionado);
 
     for(let i = 0; i < listaQuizzesServidor.length; i++){
         if(listaQuizzesServidor[i].id == idSelecionado){
@@ -59,7 +57,9 @@ function abrirQuizz(idSelecionado){
 
         banner.innerHTML += imgENomeBanner;
 
-        for(let c = 0; c < listaQuizzesServidor[i].questions.length; c++){
+        numeroDePerguntas = listaQuizzesServidor[i].questions.length;
+
+        for(let c = 0; c < numeroDePerguntas; c++){
 
             respostasEmbaralhadas = (listaQuizzesServidor[i].questions[c].answers).sort(comparador);
 
@@ -69,11 +69,11 @@ function abrirQuizz(idSelecionado){
                 `<div class="quadro-pergunta">
                 <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
-                        <div class="resposta">
+                        <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                             <img src="${respostasEmbaralhadas[0].image}">
                             <p>${respostasEmbaralhadas[0].text}</p>
                         </div>
-                        <div class="resposta">
+                        <div class="resposta" id="${respostasEmbaralhadas[1].isCorrectAnswer}" onclick="selecionarResposta(this, 1)">
                             <img src="${respostasEmbaralhadas[1].image}">
                             <p>${respostasEmbaralhadas[1].text}</p>
                         </div>
@@ -90,15 +90,15 @@ function abrirQuizz(idSelecionado){
                 `<div class="quadro-pergunta">
                 <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
-                        <div class="resposta">
-                            <img src="${respostasEmbaralhadas[0][0].image}">
+                        <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
+                            <img src="${respostasEmbaralhadas[0].image}">
                             <p>${respostasEmbaralhadas[0].text}</p>
                         </div>
-                        <div class="resposta">
+                        <div class="resposta" id="${respostasEmbaralhadas[1].isCorrectAnswer}" onclick="selecionarResposta(this, 1)">
                             <img src="${respostasEmbaralhadas[1].image}">
                             <p>${respostasEmbaralhadas[1].text}</p>
                         </div>
-                        <div class="resposta">
+                        <div class="resposta" id="${respostasEmbaralhadas[2].isCorrectAnswer}" onclick="selecionarResposta(this,2)">
                             <img src="${respostasEmbaralhadas[2].image}">
                             <p>${respostasEmbaralhadas[2].text}</p>
                         </div>
@@ -115,19 +115,19 @@ function abrirQuizz(idSelecionado){
             `<div class="quadro-pergunta">
             <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                 <div class="opcoes-resposta">
-                    <div class="resposta">
+                    <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                         <img src="${respostasEmbaralhadas[0].image}">
                         <p>${respostasEmbaralhadas[0].text}</p>
                     </div>
-                    <div class="resposta">
+                    <div class="resposta" id="${respostasEmbaralhadas[1].isCorrectAnswer}" onclick="selecionarResposta(this, 1)">
                         <img src="${respostasEmbaralhadas[1].image}">
                         <p>${respostasEmbaralhadas[1].text}</p>
                     </div>
-                    <div class="resposta">
+                    <div class="resposta" id="${respostasEmbaralhadas[2].isCorrectAnswer}" onclick="selecionarResposta(this, 2)">
                         <img src="${respostasEmbaralhadas[2].image}">
                         <p>${respostasEmbaralhadas[2].text}</p>
                     </div>
-                    <div class="resposta">
+                    <div class="resposta" id="${respostasEmbaralhadas[3].isCorrectAnswer}" onclick="selecionarResposta(this, 3)">
                         <img src="${respostasEmbaralhadas[3].image}">
                         <p>${respostasEmbaralhadas[3].text}</p>
                     </div>

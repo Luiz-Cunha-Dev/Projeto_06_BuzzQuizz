@@ -53,17 +53,8 @@
         <div class="lista-de-quadros">
 
 
-                <div class="caixa-de-resultado-do-quizz hidden">
-                    <div class="pontuacao"><span>88% de acerto: Você é praticamente um aluno de Hogwarts!</span></div>
-                    <div class="resultado">
-                        <img src="imgs/image 10.png">
-                        <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
-                    </div>
-                </div>
-                <div class="botoes-finais hidden">
-                    <button class="reiniciar-quizz">Reiniciar Quizz</button>
-                    <button class="voltar-pra-home">Voltar pra home</button>
-                </div>
+                
+               
 
 
         </div>
@@ -72,25 +63,31 @@
 
     <div class="tela3 hidden">
 
-        <div class="criarQuizz">
         <div class="quizInfo">
-                <h1>Comece pelo começo</h1>
-                <div class="inputInfo">
-                    <input type="text" name="tituloQuizz" placeholder="Título do seu quizz" id="titulo">
-                    <input type="url" name="URLquizz" placeholder="URL da imagem do seu quizz" id="URL">
-                    <input type="number" name="qtdeQuizz" placeholder="Quantidade de perguntas do seu quizz" id="perguntas">
-                    <input type="number" name="niveisQuizz" placeholder="Quantidade de níveis do quizz" id="niveis">
-                </div>
-                <button onclick="criarFase2()">Prosseguir pra criar perguntas</button>
+            <h1>Comece pelo começo</h1>
+            <div class="inputInfo">
+                <input type="text" name="tituloQuizz" placeholder="Título do seu quizz" id="titulo">
+                <input type="url" name="URLquizz" placeholder="URL da imagem do seu quizz" id="URL">
+                <input type="number" name="qtdeQuizz" placeholder="Quantidade de perguntas do seu quizz" id="perguntas">
+                <input type="number" name="niveisQuizz" placeholder="Quantidade de níveis do quizz" id="niveis">
             </div>
+            <button onclick="criarFase2()">Prosseguir pra criar perguntas</button>
+        </div>
 
-            <div class="perguntasQuizz hidden">
-                <h1>Crie suas perguntas</h1>
-                <div class="conjunto-perguntas">
+        <div class="perguntasQuizz hidden">
+            <h1>Crie suas perguntas</h1>
+            <div class="conjunto-perguntas">
 
-                </div>
             </div>
+            <button onclick="criarFase3()">Prosseguir pra criar níveis</button>
+        </div>
 
+        <div class="niveisQuizz hidden">
+            <h1>Agora, decida os níveis!</h1>
+            <div class="conjunto-niveis">
+
+            </div>
+            <button onclick="finalizaQuizz()">Finalizar Quizz</button>
         </div>
 
     </div>
