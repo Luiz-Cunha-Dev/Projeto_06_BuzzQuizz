@@ -142,6 +142,7 @@ function criarFase3() {
         answers: []
     }
     let verificador = 0;
+    quizzObj.questions= [];
 
     for (let i = 0; i < cjtPerguntas.length; i++){
         let titulo = cjtPerguntas[i].querySelector('input:nth-child(1)').value;
@@ -230,6 +231,65 @@ function renderizaFase3(){
             </div>
         </div>
         `
+    }
+}
+
+function finalizaQuizz() {
+    const cjtNiveis = document.querySelectorAll('.nivel-corpo');
+    quizzObj.levels = [];
+
+    let nivel = {
+        title: "",
+        image: "",
+        text: "",
+        minValue: 0
+    }
+
+    for (let i = 0; i < cjtNiveis.length; i++){
+        let titulo = cjtNiveis[i].querySelector('input:nth-child(1)').value;
+        let img = cjtNiveis[i].querySelector('input:nth-child(3)').value;
+        let txt = cjtNiveis[i].querySelector('input:nth-child(4)').value;
+        let minValor = cjtNiveis[i].querySelector('input:nth-child(2)').value;
+
+        if (validaTituloNivel(titulo) && validarURL(img) && validarDesc(txt) && validaPercent(minValor)){
+            nivel = {
+                title: titulo,
+                image: img,
+                text: txt,
+                minValue: minValor
+            }
+            quizzObj.levels.push(nivel);
+        } else {
+            alert('Preencha os campos corretamente');
+        }
+    }
+}
+
+function validaTituloNivel(str) {
+    let min = 10;
+    if (str.length < min) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validarDesc(str) {
+    let min = 30;
+    if (str.length < min) {
+        return false
+    } else {
+        return true
+    }
+}
+
+function validaPercent(num) {
+    let min = 0;
+    let max = 100;
+    if (num < min || num > max) {
+        return false;
+    } else {
+        return true;
     }
 }
 
