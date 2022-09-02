@@ -9,6 +9,13 @@ let urlImagem;
 let perguntas;
 let niveis;
 
+let quizzObj = {
+    title: '',
+    image: '',
+    questions: [],
+    levels: []
+}
+
 function criarFase2() {
     titulo = document.getElementById('titulo').value;
     urlImagem = document.getElementById('URL').value;
@@ -18,6 +25,12 @@ function criarFase2() {
     if (validarTitulo(titulo) && validarURL(urlImagem) && validarPerguntas(perguntas) && validarNiveis(niveis)){
         const fase1 = document.querySelector('.quizInfo');
         fase1.classList.add('hidden');
+        quizzObj = {
+            title: titulo,
+            image: urlImagem,
+            questions: [],
+            levels: []
+        }
         renderizaFase2();
     } else {
         alert('Preencha os campos corretamente!');
@@ -56,7 +69,7 @@ function validarPerguntas(num) {
 
 function validarNiveis(num) {
     const min = 2;
-    if (num < 2) {
+    if (num < min) {
         return false;
     } else {
         return true;
@@ -112,4 +125,94 @@ function editar(elemento) {
     const inicioDiv = elemento.parentNode.parentNode;
     const abreDiv = inicioDiv.querySelector('.pergunta-corpo');
     abreDiv.classList.remove('hidden');
+}
+function criarFase3() {
+    const cjtPerguntas = document.querySelectorAll('.criar-pergunta');
+    let quest = {
+        title: '',
+        color: '',
+        answers: []
+    }
+
+    for (let i = 0; i < cjtPerguntas.length; i++){
+        let titulo = cjtPerguntas[i].querySelector('input:nth-child(1)').value;
+        let cor = cjtPerguntas[i].querySelector('input:nth-child(2)').value;
+        if (validaTituloPergunta(titulo) && validarHexa(cor)){
+            quest = {
+                title: titulo,
+                color: cor,
+                answers: []
+            }
+        } else {
+            alert('Preencha os campos corretamente')
+        }
+
+        let respCerta = cjtPerguntas[i].querySelector('.resposta-certa');
+        let textCerto = respCerta.querySelector('input:nth-child(2)').value;
+        let imgCerta = respCerta.querySelector('input:nth-child(3)').value;
+        if (validaResposta(textCerto) && validarURL(imgCerta)){
+            let objCerto = {
+                text: textCerto,
+                image: imgCerta,
+                isCorrectAnswer: true
+            }
+            quest.answers.push(objCerto);
+        } else {
+            alert('Preencha os dados corretamente')
+        }
+
+        let respsErradas = cjtPerguntas[i].querySelectorAll('.resp');
+        for (let j = 0; j < respsErradas.length; j++){
+            let txtErrado = respsErradas[j].querySelector('input:nth-child(1)').value;
+            let imgErrada = respsErradas[j].querySelector('input:nth-child(2)').value;
+            if(j === 0 && validaResposta(txtErrado) && validarURL(imgErrada)){
+                let objErrado = {
+                    text: txtErrado,
+                    image: imgErrada,
+                    isCorrectAnswer: false
+                }
+                quest.answers.push(objErrado);
+            } else if (j === 0 && !validaResposta(txtErrado)){
+                alert('Preencha os dados corretamente');
+            } else if (j !== 0 && txtErrado !== ''){
+                let objErrado = {
+                    text: txtErrado,
+                    image: imgErrada,
+                    isCorrectAnswer: false
+                }
+                quest.answers.push(objErrado);
+            }
+        }
+
+        quizzObj.questions.push(quest);
+
+    }
+    console.log(quizzObj);
+}
+
+function validaTituloPergunta(str) {
+    const min = 20;
+    if (str.length < min) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validarHexa(str) {
+    const min = 7;
+    if (str.length < min && str.charAt(0) !== '#'){
+        return false
+    } else {
+        return true
+    }
+}
+
+function validaResposta(str) {
+    const vazio = '';
+    if (str === vazio) {
+        return false;
+    } else {
+        return true;
+    }
 }
