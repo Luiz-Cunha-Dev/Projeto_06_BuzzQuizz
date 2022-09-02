@@ -16,6 +16,8 @@ let imgENomeBanner;
 let quadroDePergunta;
 let respostasEmbaralhadas;
 let numeroDePerguntas;
+let levels;
+let ultimoQuizzAberto;
 
 
 function importarQuizzes(){
@@ -46,8 +48,12 @@ function erroEmImportarQuizzes(resposta){
 
 function abrirQuizz(idSelecionado){
 
+    ultimoQuizzAberto = idSelecionado;
+
     for(let i = 0; i < listaQuizzesServidor.length; i++){
         if(listaQuizzesServidor[i].id == idSelecionado){
+
+            levels = listaQuizzesServidor[i].levels;
 
         banner.innerHTML = "";
         imgENomeBanner = 

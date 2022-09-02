@@ -7,6 +7,10 @@ let contadorDePerguntasRespondidas = 0;
 let contadorDeAcertos = 0;
 let porcentagem = 0;
 let score = 0;
+let valorReferencia = 0;
+let imagemFinal;
+let textoFinal;
+let tituloFinal;
 
 function selecionarResposta(resposta, numero){
 
@@ -30,7 +34,7 @@ function selecionarResposta(resposta, numero){
 
     contadorDePerguntasRespondidas++
 
-    if(resposta.className === "resposta"){
+    if(resposta.className === "resposta alternativa-certa"){
         contadorDeAcertos++
 
     }
@@ -38,21 +42,40 @@ function selecionarResposta(resposta, numero){
     if(contadorDePerguntasRespondidas === numeroDePerguntas){
         porcentagem = (contadorDeAcertos/numeroDePerguntas)*100;
         score = Math.round(porcentagem);
+        console.log(levels);
 
+        for(let i = 0; i < levels.length; i++){
+
+            if(valorReferencia === 0 && i < 1){
+                valorReferencia = score - levels[i].minValue;
+
+                imagemFinal = levels[i].image;
+                textoFinal = levels[i].text;
+                tituloFinal = levels[i].title;
+
+            }else if((score - levels[i].minValue) < valorReferencia && (score - levels[i].minValue) >= 0){
+                valorReferencia = score - levels[i].minValue;
+
+                imagemFinal = levels[i].image;
+                textoFinal = levels[i].text;
+                tituloFinal = levels[i].title;
+
+            }
+        }
         let caixaDeResultado = 
         `<div class="caixa-de-resultado-do-quizz">
-            <div class="pontuacao"><span>88% de acerto: Você é praticamente um aluno de Hogwarts!</span></div>
+            <div class="pontuacao"><span>${score}% de acerto: ${tituloFinal}</span></div>
             <div class="resultado">
-                <img src="imgs/image 10.png">
-                <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
+                <img src="${imagemFinal}">
+                <p>${textoFinal}</p>
             </div>
         </div>
         `;
 
         let botoesFinais =
         `<div class="botoes-finais">
-                <button class="reiniciar-quizz">Reiniciar Quizz</button>
-                <button class="voltar-pra-home">Voltar pra home</button>
+                <button class="reiniciar-quizz" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                <button class="voltar-pra-home" onclick="voltarPraHome()">Voltar pra home</button>
         </div>
         `;
 
@@ -60,4 +83,16 @@ function selecionarResposta(resposta, numero){
         listaQuadros.innerHTML += botoesFinais;
     }
 
+}
+
+function voltarPraHome(){
+    window.location.reload();
+}
+
+function reiniciarQuizz(){
+    listaQuadros.innerHTML = "";
+    contadorDePerguntasRespondidas = 0;
+    contadorDeAcertos = 0;
+    valorReferencia = 0;
+    abrirQuizz(ultimoQuizzAberto);
 }

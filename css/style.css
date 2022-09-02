@@ -237,6 +237,7 @@
     line-height: 23px;
     overflow-wrap: break-word;
     margin-top: 20px;
+    cursor: pointer;
   }
 
   .resposta img{
@@ -248,7 +249,7 @@
 
   .caixa-de-resultado-do-quizz{
     width: 759px;
-    height: 440px;
+    height: 100%;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     padding: 28px;
@@ -276,6 +277,7 @@
   .resultado{
     margin-top: 18px;
     display: flex;
+    justify-content: space-between;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -287,7 +289,12 @@
   .resultado img{
     width: 364px;
     height: 273px;
-    margin-right: 21px;
+  }
+
+  .resultado p{
+    height: 100%;
+    width: 300px;
+    overflow-wrap: break-word;
   }
 
   .reiniciar-quizz{
@@ -326,6 +333,11 @@
     align-items: center;
     margin-bottom: 85px;
   }
+
+  .reiniciar-quizz, .voltar-pra-home{
+    cursor: pointer;
+  }
+
 
   /* -------------------------------- TELA 3 --------------------------------------------*/
   .quizInfo, .perguntasQuizz, .niveisQuizz {
@@ -547,7 +559,6 @@
 
       .caixa-de-resultado-do-quizz{
         width: 375px;
-        height: 500px;
         padding: 18px;
         margin-top: 24px;
       }
@@ -573,6 +584,10 @@
         width: 340px;
         height: 255px;
         margin-bottom: 9px;
+      }
+
+      .resultado p{
+        width: 100%;
       }
     
       .reiniciar-quizz{
