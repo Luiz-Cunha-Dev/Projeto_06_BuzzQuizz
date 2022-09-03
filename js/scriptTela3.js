@@ -4,6 +4,37 @@ function criarQuizz(){
     tela3.classList.remove('hidden');
 }
 
+function checaQuizz() {
+    if (localStorage.length !== 0) {
+        document.querySelector('.janela-criar-primeiro-quizz').classList.add('hidden');
+        document.querySelector('.janela-seus-quizzes').classList.remove('hidden');
+        mostraQuizzesUser();
+    }
+}
+checaQuizz();
+
+function mostraQuizzesUser(){
+
+    const quizzUser = localStorage.getItem('quizzesCriados');
+    const arrQuizzes = JSON.parse(quizzUser);
+    
+    for (let i = 0; i < localStorage.length; i++) {
+        const id = arrQuizzes[i];
+        const tragaQuizz = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/'+ id);
+        tragaQuizz.then(quizzHome);
+    }
+}
+function quizzHome(quizz) {
+    const container = document.querySelector('.quadro-de-quizzes');
+
+    container.innerHTML += `
+        <div class="quizz" onclick="abrirQuizz(this.id)" id="${quizz.data.id}">
+        <img src="${quizz.data.image}">
+        <div class="nome-quizz">${quizz.data.title}</div>
+        </div>
+    `
+}
+
 let titulo;
 let urlImagem;
 let perguntas;
@@ -200,7 +231,7 @@ function criarFase3() {
         quizzObj.questions.push(quest);
 
     }
-    console.log(quizzObj);
+    
     if (verificador === 0) {
         renderizaFase3();
     }
@@ -259,10 +290,70 @@ function finalizaQuizz() {
                 minValue: minValor
             }
             quizzObj.levels.push(nivel);
+
         } else {
             alert('Preencha os campos corretamente');
         }
+
+        postarQuizz();
     }
+}
+
+function postarQuizz() {
+    const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizzObj);
+    promisse.then(quizzSalvo);
+    promisse.catch(quizzNaoSalvo);
+
+}
+
+function quizzSalvo(resposta) {
+
+    let quizzesCriados;
+
+    if (!localStorage.getItem('quizzesCriados')){
+        quizzesCriados = [];
+    } else {
+        quizzesCriados = JSON.parse(localStorage.getItem('quizzesCriados'));
+    } 
+
+    let idQuizzUser = resposta.data.id;
+
+    quizzesCriados.push(idQuizzUser);
+
+    localStorage.setItem('quizzesCriados', JSON.stringify(quizzesCriados));
+
+    renderizaSucesso(resposta.data);
+
+}
+
+function renderizaSucesso(quizz) {
+    const telaNiveis = document.querySelector('.niveisQuizz');
+    telaNiveis.classList.add('hidden');
+
+    const telaSucesso = document.querySelector('.sucessoQuizz');
+    telaSucesso.classList.remove('hidden');
+
+    const container = document.querySelector('.exibe-quizz');
+    container.innerHTML = `
+        <div class="quizz lylq" onclick="abrirQuizz(this.id)" id="${quizz.id}">
+        <img src="${quizz.image}">
+        <div class="nome-quizz">${quizz.title}</div>
+        </div>
+    `
+}
+
+function acessarQuizz() {
+    const elemento = document.querySelector('.lylq').id;
+    abrirQuizz(elemento);
+
+}
+
+function voltarHome(){
+    location.reload();
+}
+
+function quizzNaoSalvo(err) {
+    console.log(err);
 }
 
 function validaTituloNivel(str) {
