@@ -63,6 +63,7 @@ function abrirQuizz(idSelecionado){
 
         banner.innerHTML += imgENomeBanner;
 
+
         numeroDePerguntas = listaQuizzesServidor[i].questions.length;
 
         for(let c = 0; c < numeroDePerguntas; c++){
@@ -148,13 +149,16 @@ function abrirQuizz(idSelecionado){
 
         }
 
+
         }
+
+        
     }
 
 
     tela1.classList.add('hidden');
     tela2.classList.remove('hidden');
-
+    window. scrollTo(0,0);
 }
 
 

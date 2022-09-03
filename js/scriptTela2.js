@@ -4,6 +4,7 @@ const botoesFinais = document.querySelector('.botoes-finais');
 let opcoesResposta;
 let listaDeRespostas;
 let contadorDePerguntasRespondidas = 0;
+let contadorDePerguntasRespondidasMenosUm = 0;
 let contadorDeAcertos = 0;
 let porcentagem = 0;
 let score = 0;
@@ -11,6 +12,14 @@ let valorReferencia = 0;
 let imagemFinal;
 let textoFinal;
 let tituloFinal;
+
+let option = {
+    behavior: "smooth",
+    block:    "center",
+    inline:   "center"
+}
+
+
 
 function selecionarResposta(resposta, numero){
 
@@ -33,6 +42,12 @@ function selecionarResposta(resposta, numero){
 }
 
     contadorDePerguntasRespondidas++
+
+    if(contadorDePerguntasRespondidas > contadorDePerguntasRespondidasMenosUm){
+
+        setTimeout(irPraProximaPergunta, 2000);
+    }
+
 
     if(resposta.className === "resposta alternativa-certa"){
         contadorDeAcertos++
@@ -81,9 +96,28 @@ function selecionarResposta(resposta, numero){
 
         listaQuadros.innerHTML += caixaDeResultado;
         listaQuadros.innerHTML += botoesFinais;
+
+
+        setTimeout(irProQuadroDeResultado, 2000);
     }
 
 }
+
+function irProQuadroDeResultado(){
+    const QuadroDeresultado = document.querySelector('.lista-de-quadros .caixa-de-resultado-do-quizz');
+    QuadroDeresultado.scrollIntoView(option);
+}
+
+function irPraProximaPergunta(){
+    let proximoQuadro =listaQuadros.children[contadorDePerguntasRespondidas];
+
+        if(proximoQuadro === undefined){
+        }else{
+            proximoQuadro.scrollIntoView(option);
+            contadorDePerguntasRespondidasMenosUm++;
+        }
+}
+
 
 function voltarPraHome(){
     window.location.reload();
@@ -92,6 +126,7 @@ function voltarPraHome(){
 function reiniciarQuizz(){
     listaQuadros.innerHTML = "";
     contadorDePerguntasRespondidas = 0;
+    contadorDePerguntasRespondidasMenosUm = 0;
     contadorDeAcertos = 0;
     valorReferencia = 0;
     abrirQuizz(ultimoQuizzAberto);
