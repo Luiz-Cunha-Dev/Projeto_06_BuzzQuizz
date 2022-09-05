@@ -1,6 +1,12 @@
 function criarQuizz(){
 
     tela1.classList.add('hidden');
+    telaLoading.classList.remove('hidden');
+    setTimeout(carregarEAbrirTela3, 1000);
+}
+
+function carregarEAbrirTela3(){
+    telaLoading.classList.add('hidden');
     tela3.classList.remove('hidden');
 }
 
@@ -304,6 +310,9 @@ function postarQuizz() {
     promisse.then(quizzSalvo);
     promisse.catch(quizzNaoSalvo);
 
+    tela3.classList.add('hidden');
+    telaLoading.classList.remove('hidden');
+
 }
 
 function quizzSalvo(resposta) {
@@ -340,11 +349,14 @@ function renderizaSucesso(quizz) {
         <div class="nome-quizz">${quizz.title}</div>
         </div>
     `
+
+    telaLoading.classList.add('hidden');
+    tela3.classList.remove('hidden');
 }
 
 function acessarQuizz() {
-    const elemento = document.querySelector('.lylq').id;
-    abrirQuizz(elemento);
+    const elemento = document.querySelector('.lylq');
+    abrirQuizz(elemento.id);
 
 }
 
@@ -353,6 +365,8 @@ function voltarHome(){
 }
 
 function quizzNaoSalvo(err) {
+    telaLoading.classList.add('hidden');
+    tela3.classList.remove('hidden');
     console.log(err);
 }
 

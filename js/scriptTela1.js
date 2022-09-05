@@ -1,6 +1,7 @@
 const tela1 = document.querySelector('.tela1');
 const tela2 = document.querySelector('.tela2');
 const tela3 = document.querySelector('.tela3');
+const telaLoading = document.querySelector('.tela-de-loading');
 
 const banner = document.querySelector('.banner');
 const listaQuadros = document.querySelector('.lista-de-quadros');
@@ -24,6 +25,9 @@ function importarQuizzes(){
     const promesaQuizzesServidor = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
     promesaQuizzesServidor.then(sucessoEmImportarQuizzes);
     promesaQuizzesServidor.catch(erroEmImportarQuizzes)
+
+    tela1.classList.add('hidden');
+    telaLoading.classList.remove('hidden');
 }
 importarQuizzes()
 
@@ -33,6 +37,8 @@ function sucessoEmImportarQuizzes(resposta){
     console.log(resposta);
     listaQuizzesServidor = resposta.data;
     renderizarTodosOsQuizzes(listaQuizzesServidor);
+    tela1.classList.remove('hidden');
+    telaLoading.classList.add('hidden');
 }
 
 
@@ -74,7 +80,7 @@ function abrirQuizz(idSelecionado){
 
                 quadroDePergunta= 
                 `<div class="quadro-pergunta">
-                <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+                <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
                         <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                             <img src="${respostasEmbaralhadas[0].image}">
@@ -95,7 +101,7 @@ function abrirQuizz(idSelecionado){
 
                 quadroDePergunta= 
                 `<div class="quadro-pergunta">
-                <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+                <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
                         <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                             <img src="${respostasEmbaralhadas[0].image}">
@@ -120,7 +126,7 @@ function abrirQuizz(idSelecionado){
 
                 quadroDePergunta= 
             `<div class="quadro-pergunta">
-            <div class="pergunta"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+            <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                 <div class="opcoes-resposta">
                     <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                         <img src="${respostasEmbaralhadas[0].image}">
@@ -157,6 +163,12 @@ function abrirQuizz(idSelecionado){
 
 
     tela1.classList.add('hidden');
+    telaLoading.classList.remove('hidden');
+    setTimeout(CarregarEAbrirQuizz, 1000);
+}
+
+function CarregarEAbrirQuizz(){
+    telaLoading.classList.add('hidden');
     tela2.classList.remove('hidden');
     window. scrollTo(0,0);
 }
