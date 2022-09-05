@@ -1,3 +1,5 @@
+let quizzesCriados;
+
 function criarQuizz() {
 
     tela1.classList.add('hidden');
@@ -319,7 +321,6 @@ function quizzSalvo(resposta) {
     promesaQuizzesServidor.then(atualizaLista);
     promesaQuizzesServidor.catch(erroAtualizar);
 
-    let quizzesCriados;
 
     if (!localStorage.getItem('quizzesCriados')) {
         quizzesCriados = [];

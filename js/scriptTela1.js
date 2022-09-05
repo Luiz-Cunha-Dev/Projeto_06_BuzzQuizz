@@ -183,18 +183,34 @@ const arrayLocal = JSON.parse(armazenado);
 function renderizarTodosOsQuizzes(listaQuizzes){
     quadroTodosOsQuizzes.innerHTML = "";
 
-    const listaFiltrada = listaQuizzes.filter(lista => !arrayLocal.includes(lista.id));
+    if(arrayLocal === null){
+        for(let i = 0; i < listaQuizzes.length; i++){
+            quizz = 
+            `
+            <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaQuizzes[i].id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${listaQuizzes[i].image});  background-repeat: no-repeat; background-size: 100% 100%;">
+            <div class="nome-quizz">${listaQuizzes[i].title}</div>
+            </div>
+            `;
+            
+            quadroTodosOsQuizzes.innerHTML += quizz;
+        }
 
-    for(let i = 0; i < listaFiltrada.length; i++){
-        quizz = 
-        `
-        <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaFiltrada[i].id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${listaFiltrada[i].image});  background-repeat: no-repeat; background-size: 100% 100%;">
-        <div class="nome-quizz">${listaFiltrada[i].title}</div>
-        </div>
-        `;
-        
-        quadroTodosOsQuizzes.innerHTML += quizz;
+    }else{
+        const listaFiltrada = listaQuizzes.filter(lista => !arrayLocal.includes(lista.id));
+
+
+        for(let i = 0; i < listaFiltrada.length; i++){
+            quizz = 
+            `
+            <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaFiltrada[i].id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${listaFiltrada[i].image});  background-repeat: no-repeat; background-size: 100% 100%;">
+            <div class="nome-quizz">${listaFiltrada[i].title}</div>
+            </div>
+            `;
+            
+            quadroTodosOsQuizzes.innerHTML += quizz;
+        }
     }
+
 }
 
 
