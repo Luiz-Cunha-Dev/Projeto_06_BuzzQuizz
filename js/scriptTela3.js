@@ -123,9 +123,9 @@ function renderizaFase2(){
     for (let i = 0; i < perguntas; i++){
         lista.innerHTML += `
         <div class="criar-pergunta"> <!--Começo da pergunta-->
-                    <div class="pergunta-header">
+                    <div class="pergunta-header" data-identifier="question-form">
                         <h1>Pergunta ${i+1}</h1>
-                        <img src="imgs/editar.png" onclick="editar(this)" alt="">
+                        <img src="imgs/editar.png" onclick="editar(this)" data-identifier="expand">
                     </div>
                     <div class="pergunta-corpo hidden">
                         <input type="text" name="pergunta-text" id="" placeholder="Texto da pergunta">
@@ -256,9 +256,9 @@ function renderizaFase3(){
     for (let i = 0; i < niveis; i++) {
         lista.innerHTML += `
         <div class="criar-nivel">
-            <div class="nivel-header">
+            <div class="nivel-header" data-identifier="level">
                 <h1>Nível ${i+1}</h1>
-                <img src="imgs/editar.png" onclick="editarNivel(this)" alt="">
+                <img src="imgs/editar.png" onclick="editarNivel(this)" data-identifier="expand">
             </div>
             <div class="nivel-corpo hidden">
                 <input type="text" name="" id="" placeholder="Título do nível">

@@ -80,13 +80,13 @@ function abrirQuizz(idSelecionado){
 
                 quadroDePergunta= 
                 `<div class="quadro-pergunta">
-                <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+                <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};" data-identifier="question"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
-                        <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
+                        <div data-identifier="answer" class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                             <img src="${respostasEmbaralhadas[0].image}">
                             <p>${respostasEmbaralhadas[0].text}</p>
                         </div>
-                        <div class="resposta" id="${respostasEmbaralhadas[1].isCorrectAnswer}" onclick="selecionarResposta(this, 1)">
+                        <div data-identifier="answer" class="resposta" id="${respostasEmbaralhadas[1].isCorrectAnswer}" onclick="selecionarResposta(this, 1)">
                             <img src="${respostasEmbaralhadas[1].image}">
                             <p>${respostasEmbaralhadas[1].text}</p>
                         </div>
@@ -101,17 +101,17 @@ function abrirQuizz(idSelecionado){
 
                 quadroDePergunta= 
                 `<div class="quadro-pergunta">
-                <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+                <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};" data-identifier="question"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                     <div class="opcoes-resposta">
-                        <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
+                        <div data-identifier="answer" class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                             <img src="${respostasEmbaralhadas[0].image}">
                             <p>${respostasEmbaralhadas[0].text}</p>
                         </div>
-                        <div class="resposta" id="${respostasEmbaralhadas[1].isCorrectAnswer}" onclick="selecionarResposta(this, 1)">
+                        <div data-identifier="answer" class="resposta" id="${respostasEmbaralhadas[1].isCorrectAnswer}" onclick="selecionarResposta(this, 1)">
                             <img src="${respostasEmbaralhadas[1].image}">
                             <p>${respostasEmbaralhadas[1].text}</p>
                         </div>
-                        <div class="resposta" id="${respostasEmbaralhadas[2].isCorrectAnswer}" onclick="selecionarResposta(this,2)">
+                        <div data-identifier="answer" class="resposta" id="${respostasEmbaralhadas[2].isCorrectAnswer}" onclick="selecionarResposta(this,2)">
                             <img src="${respostasEmbaralhadas[2].image}">
                             <p>${respostasEmbaralhadas[2].text}</p>
                         </div>
@@ -126,7 +126,7 @@ function abrirQuizz(idSelecionado){
 
                 quadroDePergunta= 
             `<div class="quadro-pergunta">
-            <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
+            <div class="pergunta" style="background-color:${listaQuizzesServidor[i].questions[c].color};" data-identifier="question"><span>${listaQuizzesServidor[i].questions[c].title}</span></div>
                 <div class="opcoes-resposta">
                     <div class="resposta" id="${respostasEmbaralhadas[0].isCorrectAnswer}" onclick="selecionarResposta(this, 0)">
                         <img src="${respostasEmbaralhadas[0].image}">
@@ -181,8 +181,7 @@ function renderizarTodosOsQuizzes(listaQuizzes){
     for(let i = 0; i < listaQuizzes.length; i++){
         quizz = 
         `
-        <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaQuizzes[i].id}">
-        <img src="${listaQuizzes[i].image}">
+        <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaQuizzes[i].id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${listaQuizzes[i].image});  background-repeat: no-repeat; background-size: 100% 100%;">
         <div class="nome-quizz">${listaQuizzes[i].title}</div>
         </div>
         `;

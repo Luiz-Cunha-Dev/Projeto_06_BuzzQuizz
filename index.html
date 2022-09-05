@@ -25,17 +25,17 @@
         <div class="janela-criar-primeiro-quizz">
             <p>Você não criou nenhum</p>
             <p>quizz ainda :(</p>
-            <button onclick="criarQuizz(this)">Criar Quizz</button>
+            <button onclick="criarQuizz(this)" data-identifier="create-quizz">Criar Quizz</button>
         </div>
 
-        <div class="janela-seus-quizzes hidden">
+        <div class="janela-seus-quizzes hidden" data-identifier="user-quizzes">
             <div class="titulo-quadro">Seus Quizzes
-                <button onclick="criarQuizz(this)">+</button>
+                <button onclick="criarQuizz(this)" data-identifier="create-quizz">+</button>
             </div>
             <div class="quadro-de-quizzes"></div>
         </div>
 
-        <div class="janela-todos-os-quizzes">
+        <div class="janela-todos-os-quizzes" data-identifier="general-quizzes">
             <div class="titulo-quadro">Todos os Quizzes</div>
             <div class="quadro-de-quizzes"></div>
         </div>
@@ -70,7 +70,7 @@
             <div class="conjunto-perguntas">
 
             </div>
-            <button onclick="criarFase3()">Prosseguir pra criar níveis</button>
+            <button onclick="criarFase3()" >Prosseguir pra criar níveis</button>
         </div>
 
         <div class="niveisQuizz hidden">

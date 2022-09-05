@@ -78,7 +78,7 @@ function selecionarResposta(resposta, numero){
             }
         }
         let caixaDeResultado = 
-        `<div class="caixa-de-resultado-do-quizz">
+        `<div class="caixa-de-resultado-do-quizz" data-identifier="quizz-result">
             <div class="pontuacao"><span>${score}% de acerto: ${tituloFinal}</span></div>
             <div class="resultado">
                 <img src="${imagemFinal}">
