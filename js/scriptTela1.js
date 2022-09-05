@@ -183,7 +183,7 @@ const arrayLocal = JSON.parse(armazenado);
 function renderizarTodosOsQuizzes(listaQuizzes){
     quadroTodosOsQuizzes.innerHTML = "";
 
-    const listaFiltrada = listaQuizzes.filter(filtroUser);
+    const listaFiltrada = listaQuizzes.filter(lista => !arrayLocal.includes(lista.id));
 
     for(let i = 0; i < listaFiltrada.length; i++){
         quizz = 
@@ -197,9 +197,7 @@ function renderizarTodosOsQuizzes(listaQuizzes){
     }
 }
 
-function filtroUser(lista) {
-    return !arrayLocal.includes(lista.id);
-}
+
 
 
 function comparador() { 
