@@ -45,6 +45,10 @@ function sucessoEmImportarQuizzes(resposta){
 
 function erroEmImportarQuizzes(resposta){
     console.log(resposta);
+    tela1.classList.remove('hidden');
+    telaLoading.classList.add('hidden');
+    alert('Erro ao carregar lista de quizzes');
+    importarQuizzes();
 }
 
 
