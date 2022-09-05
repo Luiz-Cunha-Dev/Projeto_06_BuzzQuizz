@@ -1,11 +1,11 @@
-function criarQuizz(){
+function criarQuizz() {
 
     tela1.classList.add('hidden');
     telaLoading.classList.remove('hidden');
     setTimeout(carregarEAbrirTela3, 1000);
 }
 
-function carregarEAbrirTela3(){
+function carregarEAbrirTela3() {
     telaLoading.classList.add('hidden');
     tela3.classList.remove('hidden');
 }
@@ -19,14 +19,14 @@ function checaQuizz() {
 }
 checaQuizz();
 
-function mostraQuizzesUser(){
+function mostraQuizzesUser() {
 
     const quizzUser = localStorage.getItem('quizzesCriados');
     const arrQuizzes = JSON.parse(quizzUser);
-    
-    for (let i = 0; i < localStorage.length; i++) {
+
+    for (let i = 0; i < arrQuizzes.length; i++) {
         const id = arrQuizzes[i];
-        const tragaQuizz = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/'+ id);
+        const tragaQuizz = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/' + id);
         tragaQuizz.then(quizzHome);
     }
 }
@@ -59,7 +59,7 @@ function criarFase2() {
     perguntas = document.getElementById('perguntas').value;
     niveis = document.getElementById('niveis').value;
 
-    if (validarTitulo(titulo) && validarURL(urlImagem) && validarPerguntas(perguntas) && validarNiveis(niveis)){
+    if (validarTitulo(titulo) && validarURL(urlImagem) && validarPerguntas(perguntas) && validarNiveis(niveis)) {
         const fase1 = document.querySelector('.quizInfo');
         fase1.classList.add('hidden');
         quizzObj = {
@@ -75,7 +75,7 @@ function criarFase2() {
 
 }
 
-function validarTitulo(str){
+function validarTitulo(str) {
     const min = 20;
     const max = 65;
     if ((str.length < min) || (str.length > max)) {
@@ -85,11 +85,11 @@ function validarTitulo(str){
     }
 }
 
-function validarURL(str){
+function validarURL(str) {
     try {
-        const url = new URL (str);
+        const url = new URL(str);
         return true;
-    } catch(erro) {
+    } catch (erro) {
         return false;
     }
 
@@ -113,18 +113,18 @@ function validarNiveis(num) {
     }
 }
 
-function renderizaFase2(){
+function renderizaFase2() {
     const fase2 = document.querySelector('.perguntasQuizz');
     fase2.classList.remove('hidden');
 
     const lista = document.querySelector('.conjunto-perguntas');
     lista.innerHTML = '';
 
-    for (let i = 0; i < perguntas; i++){
+    for (let i = 0; i < perguntas; i++) {
         lista.innerHTML += `
         <div class="criar-pergunta"> <!--Começo da pergunta-->
                     <div class="pergunta-header" data-identifier="question-form">
-                        <h1>Pergunta ${i+1}</h1>
+                        <h1>Pergunta ${i + 1}</h1>
                         <img src="imgs/editar.png" onclick="editar(this)" data-identifier="expand">
                     </div>
                     <div class="pergunta-corpo hidden">
@@ -179,12 +179,12 @@ function criarFase3() {
         answers: []
     }
     let verificador = 0;
-    quizzObj.questions= [];
+    quizzObj.questions = [];
 
-    for (let i = 0; i < cjtPerguntas.length; i++){
+    for (let i = 0; i < cjtPerguntas.length; i++) {
         let titulo = cjtPerguntas[i].querySelector('input:nth-child(1)').value;
         let cor = cjtPerguntas[i].querySelector('input:nth-child(2)').value;
-        if (validaTituloPergunta(titulo) && validarHexa(cor)){
+        if (validaTituloPergunta(titulo) && validarHexa(cor)) {
             quest = {
                 title: titulo,
                 color: cor,
@@ -198,7 +198,7 @@ function criarFase3() {
         let respCerta = cjtPerguntas[i].querySelector('.resposta-certa');
         let textCerto = respCerta.querySelector('input:nth-child(2)').value;
         let imgCerta = respCerta.querySelector('input:nth-child(3)').value;
-        if (validaResposta(textCerto) && validarURL(imgCerta)){
+        if (validaResposta(textCerto) && validarURL(imgCerta)) {
             let objCerto = {
                 text: textCerto,
                 image: imgCerta,
@@ -211,20 +211,20 @@ function criarFase3() {
         }
 
         let respsErradas = cjtPerguntas[i].querySelectorAll('.resp');
-        for (let j = 0; j < respsErradas.length; j++){
+        for (let j = 0; j < respsErradas.length; j++) {
             let txtErrado = respsErradas[j].querySelector('input:nth-child(1)').value;
             let imgErrada = respsErradas[j].querySelector('input:nth-child(2)').value;
-            if(j === 0 && validaResposta(txtErrado) && validarURL(imgErrada)){
+            if (j === 0 && validaResposta(txtErrado) && validarURL(imgErrada)) {
                 let objErrado = {
                     text: txtErrado,
                     image: imgErrada,
                     isCorrectAnswer: false
                 }
                 quest.answers.push(objErrado);
-            } else if (j === 0 && !validaResposta(txtErrado)){
+            } else if (j === 0 && !validaResposta(txtErrado)) {
                 alert('Preencha os dados corretamente');
                 verificador++;
-            } else if (j !== 0 && txtErrado !== ''){
+            } else if (j !== 0 && txtErrado !== '') {
                 let objErrado = {
                     text: txtErrado,
                     image: imgErrada,
@@ -237,13 +237,13 @@ function criarFase3() {
         quizzObj.questions.push(quest);
 
     }
-    
+
     if (verificador === 0) {
         renderizaFase3();
     }
 }
 
-function renderizaFase3(){
+function renderizaFase3() {
     const fase2 = document.querySelector('.perguntasQuizz');
     fase2.classList.add('hidden');
 
@@ -257,7 +257,7 @@ function renderizaFase3(){
         lista.innerHTML += `
         <div class="criar-nivel">
             <div class="nivel-header" data-identifier="level">
-                <h1>Nível ${i+1}</h1>
+                <h1>Nível ${i + 1}</h1>
                 <img src="imgs/editar.png" onclick="editarNivel(this)" data-identifier="expand">
             </div>
             <div class="nivel-corpo hidden">
@@ -282,13 +282,13 @@ function finalizaQuizz() {
         minValue: 0
     }
 
-    for (let i = 0; i < cjtNiveis.length; i++){
+    for (let i = 0; i < cjtNiveis.length; i++) {
         let titulo = cjtNiveis[i].querySelector('input:nth-child(1)').value;
         let img = cjtNiveis[i].querySelector('input:nth-child(3)').value;
         let txt = cjtNiveis[i].querySelector('input:nth-child(4)').value;
         let minValor = cjtNiveis[i].querySelector('input:nth-child(2)').value;
 
-        if (validaTituloNivel(titulo) && validarURL(img) && validarDesc(txt) && validaPercent(minValor)){
+        if (validaTituloNivel(titulo) && validarURL(img) && validarDesc(txt) && validaPercent(minValor)) {
             nivel = {
                 title: titulo,
                 image: img,
@@ -300,9 +300,8 @@ function finalizaQuizz() {
         } else {
             alert('Preencha os campos corretamente');
         }
-
-        postarQuizz();
     }
+    postarQuizz();
 }
 
 function postarQuizz() {
@@ -317,13 +316,17 @@ function postarQuizz() {
 
 function quizzSalvo(resposta) {
 
+    const promesaQuizzesServidor = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
+    promesaQuizzesServidor.then(atualizaLista);
+    promesaQuizzesServidor.catch(erroAtualizar);
+
     let quizzesCriados;
 
-    if (!localStorage.getItem('quizzesCriados')){
+    if (!localStorage.getItem('quizzesCriados')) {
         quizzesCriados = [];
     } else {
         quizzesCriados = JSON.parse(localStorage.getItem('quizzesCriados'));
-    } 
+    }
 
     let idQuizzUser = resposta.data.id;
 
@@ -335,6 +338,16 @@ function quizzSalvo(resposta) {
 
 }
 
+function atualizaLista(resposta) {
+    listaQuizzesServidor = resposta.data;
+}
+
+function  erroAtualizar(err) {
+    console.log(err);
+}
+
+let quizzID;
+
 function renderizaSucesso(quizz) {
     const telaNiveis = document.querySelector('.niveisQuizz');
     telaNiveis.classList.add('hidden');
@@ -342,9 +355,11 @@ function renderizaSucesso(quizz) {
     const telaSucesso = document.querySelector('.sucessoQuizz');
     telaSucesso.classList.remove('hidden');
 
+    quizzID = quizz.id;
+
     const container = document.querySelector('.exibe-quizz');
     container.innerHTML = `
-        <div class="quizz lylq" onclick="abrirQuizz(this.id)" id="${quizz.id}">
+        <div class="quizz" onclick="abrirQuizz(this.id)" id="${quizz.id}">
         <img src="${quizz.image}">
         <div class="nome-quizz">${quizz.title}</div>
         </div>
@@ -355,12 +370,10 @@ function renderizaSucesso(quizz) {
 }
 
 function acessarQuizz() {
-    const elemento = document.querySelector('.lylq');
-    abrirQuizz(elemento.id);
-
+    abrirQuizz(quizzID);
 }
 
-function voltarHome(){
+function voltarHome() {
     location.reload();
 }
 
@@ -409,7 +422,7 @@ function validaTituloPergunta(str) {
 
 function validarHexa(str) {
     const min = 7;
-    if (str.length < min && str.charAt(0) !== '#'){
+    if (str.length < min && str.charAt(0) !== '#') {
         return false
     } else {
         return true
