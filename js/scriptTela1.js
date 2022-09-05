@@ -173,21 +173,28 @@ function CarregarEAbrirQuizz(){
     window. scrollTo(0,0);
 }
 
-
+const armazenado = localStorage.getItem('quizzesCriados');
+const arrayLocal = JSON.parse(armazenado);
 
 function renderizarTodosOsQuizzes(listaQuizzes){
     quadroTodosOsQuizzes.innerHTML = "";
 
-    for(let i = 0; i < listaQuizzes.length; i++){
+    const listaFiltrada = listaQuizzes.filter(filtroUser);
+
+    for(let i = 0; i < listaFiltrada.length; i++){
         quizz = 
         `
-        <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaQuizzes[i].id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${listaQuizzes[i].image});  background-repeat: no-repeat; background-size: 100% 100%;">
-        <div class="nome-quizz">${listaQuizzes[i].title}</div>
+        <div class="quizz" onclick="abrirQuizz(this.id)" id="${listaFiltrada[i].id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${listaFiltrada[i].image});  background-repeat: no-repeat; background-size: 100% 100%;">
+        <div class="nome-quizz">${listaFiltrada[i].title}</div>
         </div>
         `;
         
         quadroTodosOsQuizzes.innerHTML += quizz;
     }
+}
+
+function filtroUser(lista) {
+    return !arrayLocal.includes(lista.id);
 }
 
 
