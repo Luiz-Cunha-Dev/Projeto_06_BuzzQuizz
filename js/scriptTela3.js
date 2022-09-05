@@ -34,8 +34,7 @@ function quizzHome(quizz) {
     const container = document.querySelector('.quadro-de-quizzes');
 
     container.innerHTML += `
-        <div class="quizz" onclick="abrirQuizz(this.id)" id="${quizz.data.id}">
-        <img src="${quizz.data.image}">
+        <div class="quizz" onclick="abrirQuizz(this.id)" id="${quizz.data.id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${quizz.data.image});  background-repeat: no-repeat; background-size: 100% 100%;">
         <div class="nome-quizz">${quizz.data.title}</div>
         </div>
     `
@@ -359,8 +358,7 @@ function renderizaSucesso(quizz) {
 
     const container = document.querySelector('.exibe-quizz');
     container.innerHTML = `
-        <div class="quizz" onclick="abrirQuizz(this.id)" id="${quizz.id}">
-        <img src="${quizz.image}">
+        <div class="quizz" onclick="abrirQuizz(this.id)" id="${quizz.id}" data-identifier="quizz-card" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${quizz.image});  background-repeat: no-repeat; background-size: 100% 100%;">
         <div class="nome-quizz">${quizz.title}</div>
         </div>
     `
