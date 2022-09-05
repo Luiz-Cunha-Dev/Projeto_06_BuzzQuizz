@@ -11,7 +11,7 @@
 
   header{
     position: fixed;
-    width: 100%;
+    width: 100vw;
     height: 69px;
     left: 0px;
     top: 0px;
@@ -63,6 +63,7 @@
     overflow-wrap: break-word;
     display: flex;
     align-items: flex-end;
+    word-break: break-all;
   }
 
   .quizz img{
@@ -500,6 +501,7 @@
 
   .hidden{
     display: none;
+    z-index: -1;
   }
 
   .esbranquicado{
